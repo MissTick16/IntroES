@@ -22,6 +22,7 @@
  */
 
 #include <stdio.h>
+#include <limits.h>
 #include "stats.h"
 
 /* Size of the Data Set */
@@ -37,34 +38,109 @@ void main() {
 
   /* Other Variable Declarations Go Here */
   /* Statistics and Printing Functions Go Here */
+  printf("\n***Initial data set***\n");
+  print_array(test, SIZE);
 
+  printf("\n***Statistics***\n");
+  print_statistics(test, SIZE);
+
+  printf("\n***Sorted data set***\n");
+  print_array(test, SIZE);
 }
 
 void print_statistics(unsigned char *data, unsigned int size) {
 
+	printf(" - Minimum value: %d\n", find_minimum(data, size));
+	printf(" - Maximum value: %d\n", find_maximum(data, size));
+	printf(" - Mean value: %d\n", find_mean(data, size));
+	printf(" - Median value: %d\n", find_median(data, size));
 }
 
 void print_array(unsigned char *data, unsigned int size) {
 
+	printf("[");
+	for (int i = 0; i < size - 1; i++) {
+		printf("%d, ", data[i]);
+	}
+	
+	printf("%d]\n", data[size - 1]);	
 }
 
 unsigned char find_median(unsigned char *data, unsigned int size) {
-	return 0;
+	
+	sort_array(data, SIZE);
+	return (SIZE % 2) ? data[SIZE/2 + 1] : find_mean(data + SIZE/2 - 1, 2);
 }
 
 
 unsigned char find_mean(unsigned char *data, unsigned int size) {
-	return 0;
+	
+	unsigned int sum = 0;
+	for (int i = 0; i < size; i++)
+		sum += data[i];
+
+	return sum/size;
 }
 
 unsigned char find_maximum(unsigned char *data, unsigned int size) {
-	return 0;
+	
+	unsigned char max_value = 0;
+	
+	for (int i = 0; i < size; i++) {
+		if (data[i] > max_value)
+			max_value = data[i];	
+	}
+
+	return max_value;
 }
 
 unsigned char find_minimum(unsigned char *data, unsigned int size) {
-	return 0;
+	
+	unsigned char min_value = UCHAR_MAX;
+	
+	for (int i = 0; i < size; i++) {
+		if (data[i] < min_value)
+			min_value = data[i];	
+	}
+
+	return min_value;
 }
 
-void sort_array(unsigned char *data, const unsigned int size) {
+/* Gets position of minimum element from a "slice" of the initial array */
+unsigned int get_min_position(unsigned char *start, unsigned char *end) {
+	
+	unsigned char min_value = UCHAR_MAX;
+	unsigned int min_offset = 0;
+	unsigned char *element = start;
 
+	while (element <= end) {
+		if (*element <= min_value) {
+			min_value = *element;
+			min_offset = element - start;
+		}
+		element++;
+	}
+
+	return min_offset;
+}
+
+void swap(unsigned char *a, unsigned char *b) {
+
+	unsigned char tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+
+/* Find the minimal elements and swap them to their corresponding final positions*/
+void sort_array(unsigned char *data, const unsigned int size) {
+	
+	// selection sort
+	unsigned int position = 0;
+
+	for (unsigned int i = 0; i < size - 1; i++) {
+		position = get_min_position(data + i, data + size - 1) + i;
+		if (position != i) {
+			swap(&data[i], &data[position]);
+		}
+	}
 }
