@@ -9,32 +9,104 @@
  *
  *****************************************************************************/
 /**
- * @file <Add File Name> 
- * @brief <Add Brief Description Here >
+ * @file   stats.h
+ * @brief  Header file containing the declarations of several statistical
+ * functions.
  *
- * <Add Extended Description Here>
- *
- * @author <Add FirsName LastName>
- * @date <Add date >
+ * @author Andra Ilie
+ * @date   23.07.2020
  *
  */
-#ifndef __STATS_H__
-#define __STATS_H__
 
-/* Add Your Declarations and Function Comments here */ 
+#ifndef __STATS_H__
+#define __STATS_H__ 
 
 /**
- * @brief <Add Brief Description of Function Here>
+ * @brief Prints statistics about a set of numbers
  *
- * <Add Extended Description Here>
+ * A function that prints the statistics of an array including minimum,
+ * maximum, mean, and median.
  *
- * @param <Add InputName> <add description here>
- * @param <Add InputName> <add description here>
- * @param <Add InputName> <add description here>
- * @param <Add InputName> <add description here>
+ * @param data Pointer to a data set
+ * @param size Number of elements in data set
  *
- * @return <Add Return Informaiton here>
  */
+void print_statistics(unsigned char *data, unsigned int size);
 
+/**
+ * @brief Prints an array to the screen
+ *
+ * A function that receives a data set and a length and prints
+ * the data to the screen.
+ *
+ * @param data Pointer to a data set
+ * @param size Number of elements in data set
+ *
+ */
+void print_array(unsigned char *data, unsigned int size);
+
+/**
+ * @brief Computes median value of a data set
+ *
+ * A function that receives a data set and a length and computes
+ * the median value of the array, which is the middle value separating
+ * the lower and the upper half.
+ *
+ * @param data Pointer to a data set
+ * @param size Number of elements in data set
+ *
+ * @return The median value of numbers provided
+ */
+unsigned char find_median(unsigned char *data, unsigned int size);
+
+/**
+ * @brief Computes mean value of a data set
+ *
+ * A function that receives a data set and a length and computes
+ * the arithmetic mean value of data.
+ *
+ * @param data Pointer to a data set
+ * @param size Number of elements in data set
+ *
+ * @return The mean value of numbers provided
+ */
+unsigned char find_mean(unsigned char *data, unsigned int size);
+
+/**
+ * @brief Computes maximum value of a data set
+ *
+ * A function that receives a data set and a length and computes
+ * the maximum value of the array.
+ *
+ * @param data Pointer to a data set
+ * @param size Number of elements in data set
+ *
+ * @return Maximum value of the numbers provided
+ */
+unsigned char find_maximum(unsigned char *data, unsigned int size);
+
+/**
+ * @brief Computes minimum value of a data set
+ *
+ * A function that receives a data set and a length and computes
+ * the minimum value of the array.
+ *
+ * @param data Pointer to a data set
+ * @param size Number of elements in data set
+ *
+ * @return Minimum value of the numbers provided
+ */
+unsigned char find_minimum(unsigned char *data, unsigned int size);
+
+/**
+ * @brief Sorts an array in ascendent order
+ *
+ * Given an array of data and a length, sorts the array from largest to smallest.
+ *
+ * @param data Pointer to a data set
+ * @param size Number of elements in data set
+ *
+ */
+void sort_array(unsigned char *data, unsigned int size);
 
 #endif /* __STATS_H__ */
