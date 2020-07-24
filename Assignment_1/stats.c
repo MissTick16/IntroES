@@ -9,17 +9,17 @@
  *
  *****************************************************************************/
 /**
- * @file <Add File Name> 
- * @brief <Add Brief Description Here >
+ * @file   stats.c
+ * @brief  Statistic functions definitions
  *
- * <Add Extended Description Here>
+ * This file contains the definitions of the functions
+ * declared in stats.h. These are some functions that compute several statistics
+ * on a data set, like average, minimum, maximum.
  *
- * @author <Add FirsName LastName>
- * @date <Add date >
+ * @author Andra Ilie
+ * @date   23.07.2020
  *
  */
-
-
 
 #include <stdio.h>
 #include "stats.h"
@@ -40,4 +40,31 @@ void main() {
 
 }
 
-/* Add other Implementation File Code Here */
+void print_statistics(unsigned char *data, unsigned int size) {
+
+}
+
+void print_array(unsigned char *data, unsigned int size) {
+
+}
+
+unsigned char find_median(unsigned char *data, unsigned int size) {
+	return 0;
+}
+
+
+unsigned char find_mean(unsigned char *data, unsigned int size) {
+	return 0;
+}
+
+unsigned char find_maximum(unsigned char *data, unsigned int size) {
+	return 0;
+}
+
+unsigned char find_minimum(unsigned char *data, unsigned int size) {
+	return 0;
+}
+
+void sort_array(unsigned char *data, const unsigned int size) {
+
+}
