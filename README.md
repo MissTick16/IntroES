@@ -16,4 +16,4 @@ nearest integer. After analysis and sorting is done, data is pretty printed to t
 `find_minimum()` - Given an array of data and a length, returns the minimum
 `sort_array()` - Given an array of data and a length, sorts the array from largest to smallest
 
-**Repository:** https://github.com/MissTick16/IntroES/Assignment_1
+**Repository:** https://github.com/MissTick16/IntroES

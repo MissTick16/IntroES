@@ -50,7 +50,9 @@ void print_array(unsigned char *data, unsigned int size);
  *
  * A function that receives a data set and a length and computes
  * the median value of the array, which is the middle value separating
- * the lower and the upper half.
+ * the lower and the upper half. If there is an even number of items 
+ * in the data set, then the median is found by taking the mean 
+ * of the two middlemost numbers
  *
  * @param data Pointer to a data set
  * @param size Number of elements in data set
@@ -99,9 +101,10 @@ unsigned char find_maximum(unsigned char *data, unsigned int size);
 unsigned char find_minimum(unsigned char *data, unsigned int size);
 
 /**
- * @brief Sorts an array in ascendent order
+ * @brief Sorts an array in descendent order
  *
- * Given an array of data and a length, sorts the array from largest to smallest.
+ * Given an array of data and a length, sorts the array from largest to smallest,
+ * using selection sort.
  *
  * @param data Pointer to a data set
  * @param size Number of elements in data set
