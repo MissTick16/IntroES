@@ -24,10 +24,12 @@
 #include <stdio.h>
 #include <limits.h>
 #include "stats.h"
+#include "platform.h"
 
 /* Size of the Data Set */
 #define SIZE (40)
 
+#ifdef USE_ME
 void main() {
 
   unsigned char test[SIZE] = { 34, 201, 190, 154,   8, 194,   2,   6,
@@ -47,23 +49,26 @@ void main() {
   printf("\n***Sorted data set***\n");
   print_array(test, SIZE);
 }
+#endif
 
 void print_statistics(unsigned char *data, unsigned int size) {
 
-	printf(" - Minimum value: %d\n", find_minimum(data, size));
-	printf(" - Maximum value: %d\n", find_maximum(data, size));
-	printf(" - Mean value: %d\n", find_mean(data, size));
-	printf(" - Median value: %d\n", find_median(data, size));
+	PRINTF(" - Minimum value: %d\n", find_minimum(data, size));
+	PRINTF(" - Maximum value: %d\n", find_maximum(data, size));
+	PRINTF(" - Mean value: %d\n", find_mean(data, size));
+	PRINTF(" - Median value: %d\n", find_median(data, size));
 }
 
 void print_array(unsigned char *data, unsigned int size) {
 
-	printf("[");
+#ifdef VERBOSE
+	PRINTF("[");
 	for (int i = 0; i < size - 1; i++) {
-		printf("%d, ", data[i]);
+		PRINTF("%d, ", data[i]);
 	}
 	
-	printf("%d]\n", data[size - 1]);	
+	PRINTF("%d]\n", data[size - 1]);	
+#endif
 }
 
 unsigned char find_median(unsigned char *data, unsigned int size) {

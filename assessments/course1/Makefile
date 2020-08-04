@@ -33,8 +33,19 @@ include sources.mk
 
 # Compiler Flags and Defines - defaults to host when no platform is given
 PLATFORM=HOST
+DEBUG=""
+COURSE=""
 CFLAGS = -Wall -Werror -g -O0 -std=c99
-CPPFLAGS = -D$(PLATFORM) $(INCLUDES)
+CPPFLAGS = $(INCLUDES) -D$(PLATFORM)
+
+ifeq ($(DEBUG),VERBOSE)
+	CPPFLAGS += -D$(DEBUG)
+endif
+
+ifeq ($(COURSE),COURSE1)
+	CPPFLAGS += -D$(COURSE)
+endif
+
 OUTPUT = c1m2
 LDFLAGS = -Wl,--Map=$(OUTPUT).map
 CC = gcc
@@ -90,6 +101,4 @@ build: $(OUTPUT).out $(DEPS)
 
 .PHONY: clean
 clean:
-	rm -f *~ ./src/*.o *.map *.out ./src/*.asm ./src/*.i ./src/*.d
-
--include $(DEPS)
+	rm -f *~ ./src/*.o *.map *.out ./src/*.asm ./src/*.i ./src/*.d *.asm

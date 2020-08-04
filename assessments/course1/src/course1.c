@@ -24,6 +24,9 @@
 #include "data.h"
 #include "stats.h"
 
+#define BASE_16 (16)
+#define BASE_10 (10)
+
 int8_t test_data1() {
   uint8_t * ptr;
   int32_t num = -4096;
@@ -38,12 +41,14 @@ int8_t test_data1() {
     return TEST_ERROR;
   }
 
-  digits = my_itoa( num, ptr, BASE_16);   
-  value = my_atoi( ptr, digits, BASE_16);
+  digits = my_itoa(num, ptr, BASE_16); 
+  value = my_atoi(ptr, digits, BASE_16);
+
   #ifdef VERBOSE
   PRINTF("  Initial number: %d\n", num);
   PRINTF("  Final Decimal number: %d\n", value);
   #endif
+  
   free_words( (uint32_t*)ptr );
 
   if ( value != num )
@@ -85,9 +90,9 @@ int8_t test_data2() {
 int8_t test_memmove1() {
   uint8_t i;
   int8_t ret = TEST_NO_ERROR;
-  uint8_t * set;
-  uint8_t * ptra;
-  uint8_t * ptrb;
+  uint8_t *set;
+  uint8_t *ptra;
+  uint8_t *ptrb;
 
   PRINTF("test_memmove1() - NO OVERLAP\n");
   set = (uint8_t*) reserve_words( MEM_SET_SIZE_W );
@@ -118,7 +123,7 @@ int8_t test_memmove1() {
     }
   }
 
-  free_words( (uint32_t*)set );
+  free_words( (uint32_t *)set );
   return ret;
 }
 

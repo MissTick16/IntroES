@@ -1,19 +1,12 @@
 **Author:** Andra Ilie
-**Project Details:** Introduction to Embedded Systems Software, Assignment 1
+**Project Details:** Introduction to Embedded Systems Software, Final Assignment
 
-This assignment contains a couple of functions that can analyze an array of unsigned char data 
-items and report analytics on the maximum, minimum, mean, and median of the data set. The data 
-set is reordered this data set from large to small. All statistics are rounded down to the 
-nearest integer. After analysis and sorting is done, data is pretty printed to the screen.
+**Implementation Details:**
+Put together the build system and implemented memory management functions.
+Run `make clean` before switching between platforms or to define/undefine compile-time switches.
 
- 
-**Details:**
-`print_statistics()` - A function that prints the statistics of an array including minimum, maximum, mean, and median
-`print_array()` - Given an array of data and a length, prints the array to the screen
-`find_median()` - Given an array of data and a length, returns the median value
-`find_mean()` - Given an array of data and a length, returns the mean
-`find_maximum()` - Given an array of data and a length, returns the maximum
-`find_minimum()` - Given an array of data and a length, returns the minimum
-`sort_array()` - Given an array of data and a length, sorts the array from largest to smallest
+**How to run:** 
+`make build DEBUG=VERBOSE COURSE=COURSE1 PLATFORM=HOST`
+DEBUG=VERBOSE and COURSE=COURSE1 are optional, but are needed to check the assignment.
 
 **Repository:** https://github.com/MissTick16/IntroES
